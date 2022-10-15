@@ -5,6 +5,7 @@
     <classes>
       <class name="api.automation.test.TextAssertion">
         <methods>
+          <include name="GetReq"/>
           <include name="textAssertion"/>
         </methods>
       </class> <!-- api.automation.test.TextAssertion -->

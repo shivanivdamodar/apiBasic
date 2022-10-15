@@ -5,12 +5,13 @@ import static org.hamcrest.Matchers.*;
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
+import io.restassured.specification.RequestSpecification;
 
 public class TextAssertion {
 	
 	
 	 @Test
-	 public void textAssertion()
+	 public void GetTest()
 	 {
 		 RestAssured.baseURI ="https://reqres.in";
 		 RestAssured
@@ -25,7 +26,7 @@ public class TextAssertion {
 		 
 	 }
 	 
-	 @Test
+	 @Test(enabled=false)
 	 public void GetReq()
 	 {
 		 
@@ -46,11 +47,40 @@ public class TextAssertion {
 		 		+ "				\"  \\\"website\\\": \\\"http://rahulshettyacademy.com\\\",\\r\\n\" + \r\n"
 		 		+ "				\"  \\\"language\\\": \\\"French-IN\\\"\\r\\n\" + \r\n"
 		 		+ "				\"}").when().post("maps/api/place/add/json").then().assertThat().statusCode(200);
-		  
+		   
+		 
+	 }
+	 
+	 
+	 
+	 
+	 
+	 @Test
+	 public void PostTest()
+	 {
+		 RestAssured.baseURI ="https://reqres.in";
+		 RestAssured
+		 .given()
+		 .when().post("/api/users")
+		 
+		 .then().log().all()
+		 .assertThat()
+		 .body("data.email", equalTo("janet.weaver@reqres.in"))
+		.and().body("data.first_name", is("Janet")) ;
 		 
 		 
 	 }
 	 
 	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	  
 
 }
